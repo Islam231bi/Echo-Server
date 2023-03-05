@@ -29,16 +29,16 @@ def handle_client(conn, addr):
         else:
             # print(f"[{addr}] {msg}")
             c = msg[0]
+            msg = msg[1:]
             if (c == 'A'):
-                msg = sorted(msg)
+                msg = ''.join(sorted(msg))
             elif (c == 'D'):
-                msg = sorted(msg, reverse=True)
+                msg = ''.join(sorted(msg, reverse=True))
             elif (c == 'C'):
-                msg = msg.upper()
+                msg = ''.join(msg.upper())
             else:
                 print("invalid option")
-            print(str(msg))
-            conn.send("Msg received".encode(FORMAT))
+            conn.send(f"Msg received, Output msg: {msg}".encode(FORMAT))
             
     conn.close()
 
