@@ -19,6 +19,8 @@ def send(msg):
     client.send(message)
     print(client.recv(2048).decode(FORMAT))
 
-msg = input("Enter the string")
+size = input("Enter string length: ")
+msg = input("Enter the string: ")
+send(size)
 send(msg)
 send(DISCONNECT_MESSAGE)

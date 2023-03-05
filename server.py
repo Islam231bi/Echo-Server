@@ -27,7 +27,17 @@ def handle_client(conn, addr):
         if msg == DISCONNECT_MESSAGE:
                 connected = False
         else:
-            print(f"[{addr}] {msg}")
+            # print(f"[{addr}] {msg}")
+            c = msg[0]
+            if (c == 'A'):
+                msg = sorted(msg)
+            elif (c == 'D'):
+                msg = sorted(msg, reverse=True)
+            elif (c == 'C'):
+                msg = msg.upper()
+            else:
+                print("invalid option")
+            print(str(msg))
             conn.send("Msg received".encode(FORMAT))
             
     conn.close()
